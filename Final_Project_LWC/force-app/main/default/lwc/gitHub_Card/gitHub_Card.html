@@ -1,0 +1,37 @@
+<template>
+    
+    <lightning-card title="Search User for GitHub Account">
+        <div class="slds-var-p-around_medium">
+            <lightning-input placeholder="Enter Fullname" onchange={getData}></lightning-input>
+            <div class="slds-p-top_medium"><lightning-button variant="Brand" type="submit" name="submit" label="Search" onclick={clickHandler}></lightning-button></div>
+        </div>
+    </lightning-card>
+
+    <template if:true={GitHubUsername}>
+        <lightning-card style="color:black" id="card">
+            <div class="slds-grid slds-gutters">
+                <div class="slds-col slds-text-heading_large slds-m-horizontal_small slds-size_2-of-3">
+                    <strong>{gitTitle}</strong>
+                </div>
+                <div class="slds-col slds-m-bottom_medium slds-size_1-of-3">
+                    <span><lightning-avatar src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"></lightning-avatar></span>
+                </div>
+            </div>
+            <div class="slds-var-p-around_medium" style="background-color:black">
+                <template if:true={userDetail}>
+                    <div class="slds-grid slds-gutters">
+                        <div class="slds-size_1-of-3"></div>
+                        <div class="slds-size_1-of-3">
+                            <span class="slds-avatar slds-avatar_circle slds-avatar_large"><img class="slds-avatar slds-avatar_circle slds-avatar_large" src={gitProfile}></span>
+                        </div>
+                    </div>
+                    <div style="color:greenyellow" class="slds-p-top_medium">
+                        <p>GitHub Username: {GitHubUsername}</p>
+                        <p>Followers: {gitFollowers} </p>
+                        <p>Member Since: {gitStart} </p>
+                    </div>
+                </template>  
+            </div>
+        </lightning-card>
+    </template>
+</template>
